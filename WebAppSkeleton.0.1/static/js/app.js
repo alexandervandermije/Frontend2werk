@@ -5,7 +5,8 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 	WEDSTRIJDAPP.game = {
 		title:'Pool A - Score: Boomsquad vs. Burning Snow',
 		//table : , 
-		tableEntry : 'team', // table function neccessary here
+		tableEntry1 : 'team',
+		tableEntry2 : 'score' // table function neccessary here
 	};
 
 	WEDSTRIJDAPP.ranking = {
