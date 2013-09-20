@@ -5,13 +5,34 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 	WEDSTRIJDAPP.game = {
 		title:'Pool A - Score: Boomsquad vs. Burning Snow',
 		//table : , 
-		tableEntry1 : 'team',
+		tableHeadFinale1 : 'team',
+		tableHeadFinale2 : 'result',
+		tableHeadFinale3 : 'team',
+		tableEntryFinale1 : 'Boomsquad',
+		tableEntryFinale2 : '15-8',
+		tableEntryFinale3 : 'Burning Snow',
+		tableHead1 : 'Score',
+		tableHead2 : 'Team',
+		tableHead3 : 'Points',
+		tableHead4 : 'team',
 		tableEntry2 : 'score' // table function neccessary here
 	};
 
 	WEDSTRIJDAPP.ranking = {
 		title:'Pool A - Ranking',
-		description:'Pagina 2 is de tweede pagina'
+		tableHead1 : "Team",
+		tableHead2 : 'W',
+		tableHead3 : 'L',
+		tableHead4 : 'Points won',
+		tableHead5 : 'Points Lost',
+		tableHead6 : '+/-',
+
+		tableEntry1 : 'Burning Snow',
+		tableEntry2 : '3',
+		tableEntry3 :  '1',
+		tableEntry4 : '53',
+		tableEntry5 : '30',
+		tableEntry6 : '+23',
 	};
 
 	WEDSTRIJDAPP.schedule = {
