@@ -15,7 +15,23 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 		tableHead2 : 'Team',
 		tableHead3 : 'Points',
 		tableHead4 : 'team',
-		tableEntry2 : 'score' // table function neccessary here
+
+	/*		gameTableFill : function(input1,input2,input3,input4)
+		{
+			tableEntry1 : input1,
+			tableEntry2 : input2,
+			tableEntry3 : input3,
+			tableEntry4 : input4,
+		}
+		/*something : 'something',
+		tableEntry1 : something,
+		gameTableFill : function(a, b, c, d){
+			tableEntry1 : 'a';
+			tableEntry2 : 'b';
+			tableEntry3 : 'c';
+			tableEntry4 : 'd';
+		}
+		*/
 	};
 
 	WEDSTRIJDAPP.ranking = {
@@ -37,7 +53,15 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 
 	WEDSTRIJDAPP.schedule = {
 		title:'Pool A - Schedule',
-		description:'Pagina 3 is de derde pagina'
+		tableHead1 : 'Monday 18 March',
+		tableHead2 : 'Team',
+		tableHead3 : 'Result',
+		tableHead4 : 'Team',
+
+		tableEntry1 : 'Monday 9:00am',
+		tableEntry2 : 'Chasing',
+		tableEntry3 : '13-9',
+		tableEntry4 : 'Amsterdam Money Gang'
 	};
 	
 	// Controller Init
@@ -45,6 +69,7 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 		init: function () {
 			// Initialize router
 			WEDSTRIJDAPP.router.init();
+			//WEDSTRIJDAPP.game.gameTableFill(bla,gha,sds,sdsdc);
 		}
 	};
 
