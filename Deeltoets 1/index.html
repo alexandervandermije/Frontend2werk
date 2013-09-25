@@ -3,16 +3,12 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Web App Skeleton v 0.1</title>
+	<title>Threesome Ultimate Frisbee</title>
 	<link href="static/css/style.css" rel="stylesheet" type="text/css" />
-	<link href="static/game.html" type="text/html"/>
-	<link href="static/schedule.html" type="text/html" />
-	<link href="static/ranking.html" type="text/html"/>
 </head>
 <body>
 	<header>
-		<img src="media/images/skeleton.png" alt="Web App Skeleton" data-source="http://www.gettyicons.com/free-icon/119/halloween-icon-set/free-skull-icon-png/">
-		<h1>Web App Skeleton</h1>
+		<h1>Threesome Ultimate Frisbee</h1>
 		<nav>
 			<ul>
 				<li><a href="#/game">Game </a></li>
@@ -44,92 +40,96 @@
 					<td data-bind= "tableEntryFinale3">
 					</td>
 			</table>
-			<table data-bind= "table">
+			<table>
 				<tr>
-					<th data-bind= "tableHead1">
-					</th>
-					<th data-bind="tableHead2">
-					</th>
-					<th data-bind= "tableHead3">
-					</th>
-					<th data-bind= "tableHead4"> 
+					<th>Score</th>
+					<th>Team 1</th>
+					<th>Team 1 - Score</th>
+					<th>Team 2</th>
+					<th>Team 2 - Score</th>
 				</tr>
+				
+				
+				<tbody data-bind="gameDataArray">
 				<tr>
-					<td data-bind= "tableEntry1">
+					<td data-bind= "score">
 					</td>
-					<td data-bind= "tableEntry2">
+					<td data-bind= "team1">
 					</td>
-					<td data-bind= "tableEntry3">
+					<td data-bind= "team1Score">
 					</td>
-					<td data-bind= "tableEntry4">
+					<td data-bind= "team2">
 					</td>
-			</table>
-			<div id="buttons">
-			<button> previous </button>
-			<button> next </button>
-		</div>
+					<td data-bind= "team2Score">
+					</td>
+				</tr>
+				</tbody>
+			</table> 
 			  </section>
 		</section>
 
 		<section data-route="ranking">
 			<h1 data-bind="title"></h1>
-				<table data-bind= "table">
+				<table>
 				<tr>
-					<th data-bind= "tableHead1">
+					<th data-bind="tableHead1">
 					</th>
 					<th data-bind="tableHead2">
 					</th>
-					<th data-bind= "tableHead3">
+					<th data-bind="tableHead3">
 					</th>
-					<th data-bind= "tableHead4">
+					<th data-bind="tableHead4">
 					</th>
-					<th data-bind= "tableHead5">
+					<th data-bind="tableHead5">
 					</th>
-					<th data-bind= "tableHead6">
+					<th data-bind="tableHead6">
 					</th> 
 				</tr>
+				<tbody data-bind="rankingDataArray">
 				<tr>
-					<td data-bind= "tableEntry1">
+					<td data-bind="tableEntry1">
 					</td>
-					<td data-bind= "tableEntry2">
+					<td data-bind="tableEntry2">
 					</td>
-					<td data-bind= "tableEntry3">
+					<td data-bind="tableEntry3">
 					</td>
-					<td data-bind= "tableEntry4">
+					<td data-bind="tableEntry4">
 					</td>
-					<td data-bind= "tableEntry5">
+					<td data-bind="tableEntry5">
 					</td>
-					<td data-bind= "tableEntry6">
+					<td data-bind="tableEntry6">
 					</td>
-
 				</tr>
+			</tbody>
 			</table>
-			<p data-bind="description"></p>
 		</section>
 
 		<section data-route="schedule">
 			<h1 data-bind="title"></h1>
 				<table data-bind= "table">
 				<tr>
-					<th data-bind= "tableHead1">
-					</th>
-					<th data-bind="tableHead2">
-					</th>
-					<th data-bind= "tableHead3">
-					</th>
-					<th data-bind= "tableHead4"> 
+					<th>Date</th>
+					<th>Team 1</th>
+					<th>Team 1 - Score</th>
+					<th>Team 2</th>
+					<th>Team 2 - Score</th>
+
 				</tr>
+				<tbody data-bind="scheduleDataArray">
 				<tr>
-					<td data-bind= "tableEntry1">
+					<td data-bind="date">
 					</td>
-					<td data-bind= "tableEntry2">
+					<td data-bind="team1">
 					</td>
-					<td data-bind= "tableEntry3">
+					<td data-bind="team1Score">
 					</td>
-					<td data-bind= "tableEntry4">
+					<td data-bind="team2">
 					</td>
+					<td data-bind="team2Score">
+					</td>
+				</tr>
+			</tbody>
 			</table>
-			<p data-bind="description"></p>
 		</section>
 	</article>
 
