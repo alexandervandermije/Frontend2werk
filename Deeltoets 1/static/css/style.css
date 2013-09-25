@@ -8,6 +8,8 @@ body {
 	font-weight: 300;
 	color:#333;
 	background-color: #fff;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
 h1 {
 	text-shadow: 1px 1px 1px #fff;
@@ -20,6 +22,7 @@ a {
 
 }
 /* navigation */
+
 ul {
 	list-style:none;
 	margin:0;
@@ -39,6 +42,7 @@ ul {
 		-webkit-border-radius: 5px;
 		-moz-border-radius: 5px;
 		border-radius: 5px;
+		margin-bottom:1em;
 		
 	}
 	ul li a {
@@ -94,6 +98,15 @@ table
 	height:100%;
 	margin:0px;
 	padding:0px;
+	background-color:#444;
+	margin-bottom: 1em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+#finaleTabel
+{
+
 }
 table tr:nth-child(odd)
 {
@@ -102,6 +115,30 @@ table tr:nth-child(odd)
 table tr:nth-child(even)
 {
 	background-color:#ffffff;
+}
+table tr:first-child th:first-child 
+{
+	-webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+}
+table tr:first-child th:last-child
+{
+-webkit-border-top-right-radius: 8px;
+-moz-border-radius-topright: 8px;
+border-top-right-radius: 8px;
+}
+table tr:last-child td:first-child 
+{
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-left-radius: 8px;
+}
+table tr:last-child td:last-child
+{
+-webkit-border-bottom-right-radius: 8px;
+-moz-border-radius-bottomright: 8px;
+border-bottom-right-radius: 8px;
 }
 table td
 {
@@ -123,22 +160,6 @@ table th
 	color:#000000;
 }
 
-/* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
-
-.col {
-	padding: 0 .5em;
-}
-.row .row {
-	margin: 0 -.5em;
-}
-
-.row:before, .row:after {
-	content: "";
-	display: table;
-}
-.row:after {
-	clear: both;
-}
 
 @media (max-width: 500px)
 {
@@ -147,111 +168,4 @@ table th
 		width: 100%;
 		margin-bottom:1%;
 	}
-}
-@media only screen {
-	.col {
-		float: left;
-		width: 100%;
-
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		        box-sizing: border-box;
-	}
-}
-/*
-/* Smartphones (portrait and landscape) ----------- 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-
-}
-*/
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-/* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-	/* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-	/* Styles */
-	nav
-	{
-		width: 32%;
-	}
-	.col {
-		width:50%;
-	}
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-	/* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-	/* Styles */
-}
-/**********
-iPad 3
-**********/
-@media
-only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape)
-and (-webkit-min-device-pixel-ratio : 2) {
-	/* Styles */
-}
-
-@media
-only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait)
-and (-webkit-min-device-pixel-ratio : 2) {
-	/* Styles */
-}
-/* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1024px) {
-
-/* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-/* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media
-only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px)
-and (orientation : landscape)
-and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-@media
-only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px)
-and (orientation : portrait)
-and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
 }

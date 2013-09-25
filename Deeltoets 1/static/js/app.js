@@ -95,7 +95,7 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
                 sections = qwery('section[data-route]'),
                 section = qwery('[data-route=' + route + ']')[0];  
 
-            // Show active section, hide all other
+            // Toon active section, hide all other
             if (section) {
             	for (var i=0; i < sections.length; i++){
             		sections[i].classList.remove('active');
