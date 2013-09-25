@@ -23,6 +23,7 @@
 		<section data-route="game" class="active">
 			<h1 data-bind="title"></h1>
 			<table data-bind= "table">
+            <thead>
 				<tr>
 					<th data-bind= "tableHeadFinale1">
 					</th>
@@ -30,8 +31,9 @@
 					</th>
 					<th data-bind= "tableHeadFinale3">
 					</th>
-					<th data-bind= "tableHeadFinale4"> 
 				</tr>
+                </thead>
+                <tbody>
 				<tr>
 					<td data-bind= "tableEntryFinale1">
 					</td>
@@ -39,8 +41,10 @@
 					</td>
 					<td data-bind= "tableEntryFinale3">
 					</td>
+                 </tbody>
 			</table>
 			<table>
+            <thead>
 				<tr>
 					<th>Score</th>
 					<th>Team 1</th>
@@ -48,8 +52,7 @@
 					<th>Team 2</th>
 					<th>Team 2 - Score</th>
 				</tr>
-				
-				
+                </thead>
 				<tbody data-bind="gameDataArray">
 				<tr>
 					<td data-bind= "score">
@@ -71,34 +74,33 @@
 		<section data-route="ranking">
 			<h1 data-bind="title"></h1>
 				<table>
+                <thead>
 				<tr>
-					<th data-bind="tableHead1">
-					</th>
-					<th data-bind="tableHead2">
-					</th>
-					<th data-bind="tableHead3">
-					</th>
-					<th data-bind="tableHead4">
-					</th>
-					<th data-bind="tableHead5">
-					</th>
-					<th data-bind="tableHead6">
-					</th> 
+					<th>Team</th>
+					<th>W</th>
+					<th>L</th>
+					<th>Points Won</th>
+					<th>Points Lost</th>
+					<th>+/-</th>
+                    <th>Goals Scored</th>
 				</tr>
+                </thead>
 				<tbody data-bind="rankingDataArray">
 				<tr>
-					<td data-bind="tableEntry1">
+					<td data-bind="team">
 					</td>
-					<td data-bind="tableEntry2">
+					<td data-bind="Win">
 					</td>
-					<td data-bind="tableEntry3">
+					<td data-bind="Lost">
 					</td>
-					<td data-bind="tableEntry4">
+					<td data-bind="Sw">
 					</td>
-					<td data-bind="tableEntry5">
+					<td data-bind="Sl">
 					</td>
-					<td data-bind="tableEntry6">
+					<td data-bind="Pw">
 					</td>
+                    <td data-bind="Pl">
+                    </td>
 				</tr>
 			</tbody>
 			</table>
@@ -107,14 +109,15 @@
 		<section data-route="schedule">
 			<h1 data-bind="title"></h1>
 				<table data-bind= "table">
+                <thead>
 				<tr>
 					<th>Date</th>
 					<th>Team 1</th>
 					<th>Team 1 - Score</th>
 					<th>Team 2</th>
 					<th>Team 2 - Score</th>
-
 				</tr>
+                </thead>
 				<tbody data-bind="scheduleDataArray">
 				<tr>
 					<td data-bind="date">

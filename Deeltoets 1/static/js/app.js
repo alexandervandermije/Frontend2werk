@@ -34,34 +34,16 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
     { score: "21", team1: "Boomsquad", team1Score: "14", team2: "Burning Snow", team2Score: "7"},
     { score: "22", team1: "Boomsquad", team1Score: "14", team2: "Burning Snow", team2Score: "8"},
     { score: "23", team1: "Boomsquad", team1Score: "15", team2: "Burning Snow", team2Score: "8"}
-    ],
-	/*		gameTableFill : function(input1,input2,input3,input4)
-		{
-			tableEntry1 : input1,
-			tableEntry2 : input2,
-			tableEntry3 : input3,
-			tableEntry4 : input4,
-		}
-		/*something : 'something',
-		tableEntry1 : something,
-		gameTableFill : function(a, b, c, d){
-			tableEntry1 : 'a';
-			tableEntry2 : 'b';
-			tableEntry3 : 'c';
-			tableEntry4 : 'd';
-		}
-		*/
+    ]
 	};
 
 	WEDSTRIJDAPP.ranking = {
 		title:'Pool A - Ranking',
-		tableHead1 : "Team",
-		tableHead2 : 'W',
-		tableHead3 : 'L',
-		tableHead4 : 'Points won',
-		tableHead5 : 'Points Lost',
-		tableHead6 : '+/-',
-
+		rankingDataArray : [  { team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
+    { team: "Boomsquad", Win: "2", Lost: "2", Sw: "9", Sl: "8", Pw: "36", Pl: "34"},
+    { team: "Burning Snow", Win: "3", Lost: "1", Sw: "11", Sl: "4", Pw: "36", Pl: "23"},
+    { team: "Beast Amsterdam", Win: "2", Lost: "2", Sw: "6", Sl: "8", Pw: "30", Pl: "34"},
+    { team: "Amsterdam Money Gang", Win: "1", Lost: "3", Sw: "6", Sl: "10", Pw: "30", Pl: "37"}]
 	};
 
 	WEDSTRIJDAPP.schedule = {
@@ -79,21 +61,21 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
     { date: "Monday, 1:00pm", team1: "Burning Snow", team1Score: "15", team2: "Amsterdam Money Gang", team2Score: "11"}]
 	};
 	
-	// Controller Init
+	// Controller 
 	WEDSTRIJDAPP.controller = {
 		init: function () {
-			// Initialize router
+			// start de router
 			WEDSTRIJDAPP.router.init();
-			//WEDSTRIJDAPP.game.gameTableFill(bla,gha,sds,sdsdc);
 		}
 	};
 
 	// Router
 	WEDSTRIJDAPP.router = {
 		init: function () {
-	  		routie({
+	// checkt de url voor de volgende strings ( event listener)
+			routie({
 			    '/game': function() {
-			    	WEDSTRIJDAPP.page.game();
+			    	WEDSTRIJDAPP.page.game(); 
 				},
 			    '/ranking': function() {
 			    	WEDSTRIJDAPP.page.ranking();
@@ -101,10 +83,6 @@ var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 
 			    '/schedule': function() {
 			    	WEDSTRIJDAPP.page.schedule();
-			    },
-			    '/films' : function()
-			    {
-
 			    },
 			    '*': function() {
 			    	WEDSTRIJDAPP.page.game();
