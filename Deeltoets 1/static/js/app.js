@@ -1,17 +1,16 @@
 var WEDSTRIJDAPP = WEDSTRIJDAPP || {};
 
-(function () {
-	// Data objecten
+(function () { 
+// Data objecten
 	WEDSTRIJDAPP.game = {
-		title:'Pool A - Score: Boomsquad vs. Burning Snow',
-		//table : , 
+		title:'Pool A - Score: Boomsquad vs. Burning Snow', 
 		tableHeadFinale1 : 'team',
 		tableHeadFinale2 : 'result',
 		tableHeadFinale3 : 'team',
 		tableEntryFinale1 : 'Boomsquad',
 		tableEntryFinale2 : '15-8',
 		tableEntryFinale3 : 'Burning Snow',
-		gameDataArray: [   { score: "1", team1: "Boomsquad", team1Score: "1", team2: "Burning Snow", team2Score: "0"},
+		gameDataArray: [{ score: "1", team1: "Boomsquad", team1Score: "1", team2: "Burning Snow", team2Score: "0"},
     { score: "2", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "0"},
     { score: "3", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "1"},
     { score: "4", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "2"},
