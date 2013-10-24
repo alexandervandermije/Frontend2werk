@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 	<title>Threesome Ultimate Frisbee</title>
@@ -135,13 +136,20 @@
 			</table>
 		</section>
         <section data-route="movies">
-        <h1 data-bind="headTitle"></h1>
+     	<header>
+        <h1> Movies</h1>
+        </header>
+        <table>
+        <tr>
+        <th> Title</th>
+        </tr>
+        <tbody data-bind="movieData">
+        <tr>
+        <td data-bind="title"></td>
+        </tr>
+        </tbody>
+        </table>
         
-        <div data-bind="movieDataArray">
-   		<h2 data-bind="title"></h2>
-        <p data-bind="description"</p>
-        <p data-bind="release_date"></p>
-        </div>
             
         </section>
 	</article>
@@ -151,8 +159,7 @@
 	<script src="static/js/lib/ready.min.js" type="text/javascript"></script>
 	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
 	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
-    <script src="static/js/lib/microajax.js" type="text/javascript"></script>
-    <script src"static/js/lib/quojs/quo.js" type="text/javascript"></script>
+   	<script src="static/js/lib/zepto.min.js" type="text/javascript"></script>
 
 	<!-- Application -->
 	<script src="static/js/app.js"></script>

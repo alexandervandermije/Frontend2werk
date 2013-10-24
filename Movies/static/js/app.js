@@ -63,12 +63,6 @@ var AUA = AUA || {};
 	
 	AUA.movies = {
 		headTitle: 'Movies',
-		movieDataArray : microAjax("http://dennistel.nl/movies", function(data){
-			JSON.parse(data);
-			console.log(JSON.parse(data))
-			
-			})
-		
 	};
 	
 	// Controller 
@@ -84,23 +78,8 @@ var AUA = AUA || {};
 	AUA.router = {
 		init: function () {
 	// checkt de url voor de volgende strings ( event listener)
-			routie({
-			    '/game': function() {
-			    	AUA.page.game(); 
-				},
-			    '/ranking': function() {
-			    	AUA.page.ranking();
-			    },
-
-			    '/schedule': function() {
-			    	AUA.page.schedule();
-			    },
-				'/movies': function() {
-					AUA.page.movies();
-				},
-			    '*': function() {
-			    	AUA.page.game();
-			    }
+		routie('/:pageID', function(pageID) {
+				AUA.page.render(pageID);
 			});
 		},
 
@@ -127,25 +106,34 @@ var AUA = AUA || {};
 
 	// Pages
 	AUA.page = {
-		game: function () {
-			Transparency.render(qwery('[data-route=game]')[0], AUA.game);
+	render: function (route) {
+		var data;
+			if (route == "movies") {
+			$.ajax({
+  				type: 'GET',
+ url: 'http://dennistel.nl/movies',
+  				dataType: 'json',
+  				timeout: 300,
+  				context: $('body'),
+				contentType: 'application/x-www-form-urlencoded',
+				accepts: 'application/json',
+				
+				
+ 				 success: function(data){
+   							Transparency.render(qwery('[data-route='+route+']')[0], data);
+							console.log(data)
+ 			 		},
+				})
+			}
+			
+			else {
+				// data object ophalen
+				data = eval('AUA.'+route);
+				// template, data + rules mergen
+				Transparency.render(qwery('[data-route='+route+']')[0], data);
+			}
 			AUA.router.change();
-		},
-
-		ranking: function () {
-			Transparency.render(qwery('[data-route=ranking')[0], AUA.ranking);
-			AUA.router.change();
-		},
-
-		schedule: function () {
-			Transparency.render(qwery('[data-route=schedule')[0], AUA.schedule);
-			AUA.router.change();
-		},
-		movies: function(){
-			Transparency.render(qwery('[data-route=movies')[0], AUA.movies);
-			AUA.router.change();
-		},
-	}
+	}}
 	// DOM ready
 	domready(function () {
 		// Kickstart AUAlication
