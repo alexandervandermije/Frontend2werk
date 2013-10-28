@@ -2,7 +2,7 @@ var AUA = AUA || {};
 
 (function () { 
 'use strict';
-var gameName1;
+var gameName1; // Je gebruikt hier variabelen zonder een echt duidelijke naam. Ik heb geen idee wat het nu is
 var input1;
 var input2;
 // Data objecten
@@ -44,6 +44,8 @@ var input2;
 var type 		=  'POST',
 				url  		=  "https://api.leaguevine.com/v1/game_scores/",
 				postData 	= JSON.stringify({
+				// Nu nog een vast game_id. Deze moet variabel worden
+				// de .trString functies zijn volgens mij niet nodig. Dit doet stringify al.
 				game_id: '127165'.toString(),team_1_score: input1.toString(),team_2_score: input2.toString(),is_final: 'False'
 				});
 				
@@ -116,7 +118,10 @@ var type 		=  'POST',
 	// Pages
 	AUA.page = {
 	render: function (route) {
+		// Waarvoor heb je deze variabel nodig?
 		var data;
+		// Al jouw if en else statements zijn heel verwarrend. Beter alles netjes in functies te zetten en deze aanroepen waar nodig.
+		// Anders gaat die onnodig ook al die code langs terwijl je direct de functie kan aanroepen.
 		if (isNaN(route) == false )// gameID's
 		{
 			$.ajax({
