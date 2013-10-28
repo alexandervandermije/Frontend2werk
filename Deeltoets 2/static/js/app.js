@@ -79,6 +79,7 @@ var type 		=  'POST',
 	// checkt de url voor de volgende strings ( event listener)
 		routie('/:pageID', function(pageID) {
 				AUA.page.render(pageID);
+				console.log(pageID);
 			});
 		routie({
 			'/update':function()
@@ -116,9 +117,22 @@ var type 		=  'POST',
 	AUA.page = {
 	render: function (route) {
 		var data;
+		if (isNaN(route) == false )// gameID's
+		{
+			$.ajax({
+  				type: 'GET',
+ url: 'https://api.leaguevine.com/v1/games/?game_ids=%5B'+route+'%5D&access_token=c0ad0ac783',
+  				dataType: 'json',
+				contentType: 'application/x-www-form-urlencoded',
+				accepts: 'application/json',		
+ 				 success: function(data){
+				console.log(data);
+				Transparency.render(qwery('[data-route='+route+']')[0], data.objects);
+					},
+				})
+		}
 		
-		/*
-		if (route == "ranking")
+		else if (route == "ranking")
 		{
 			$.ajax({
   				type: 'GET',
@@ -128,16 +142,16 @@ var type 		=  'POST',
 				accepts: 'application/json',		
  				 success: function(data){
 				console.log(data.objects);
-				Transparency.render(qwery('[data-route='+route+']')[0], data.objects);
+				Transparency.render(qwery('[data-route='+route+']')[0], data);
 					},
 				})
 			}
-			*/
-			if( route == "games")
+			
+			else if( route == "games")
 			{
 							$.ajax({
   				type: 'GET',
- url: 'https://api.leaguevine.com/v1/games/?season_id=20167&access_token=81a6a00da5',
+ url: 'https://api.leaguevine.com/v1/games/?season_id=20167&access_token=1da50d0118',
   				dataType: 'json',
 				contentType: 'application/x-www-form-urlencoded',
 				accepts: 'application/json',		
@@ -145,7 +159,7 @@ var type 		=  'POST',
 					 var directives = {
 					
 						}
-				Transparency.render(qwery('[data-route='+route+']')[0], data.objects, directives);
+				Transparency.render(qwery('[data-route='+route+']')[0], data, directives);
 				console.log(data)
 			
  			 		},
@@ -162,8 +176,13 @@ var type 		=  'POST',
  				 success: function(data){
 					 console.log(data.objects);
 				Transparency.render(qwery('[data-route='+route+']')[0], data.objects);
+				 
  			 		},
 				})
+		}
+		else if(route == "update")
+		{
+		console.log("hello");	
 		}
 			AUA.router.change();
 	}}
