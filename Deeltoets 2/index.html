@@ -22,19 +22,19 @@
 	<article id="content" class="col">
 		<h1 id='hoofdtitel'><span>Tournament: </span>Amsterdam Ultimate Autumn </h1>
 		<section data-route="games" class="active">
-			<h1 data-bind="title"></h1>
-            <a id="gameIDInput" href="#/">
-			<table>
+            <table>
             <thead>
 				<tr>
+                <th></th>
 					<th>Team 1</th>
 					<th>Team 1 - Score</th>
 					<th>Team 2</th>
 					<th>Team 2 - Score</th>
 				</tr>
                 </thead>
-				<tbody data-bind="objects">
-				<tr>
+                <tbody data-bind="objects">
+                <tr>
+                <td id="gameID" data-bind="id"></td>
 					<td data-bind="team_1"><div data-bind="name"></div>
 					</td>
 					<td data-bind= "team_1_score">
@@ -43,10 +43,10 @@
 					</td>
 					<td data-bind= "team_2_score">
 					</td>
+                    <td><a href="#/updatePage"> Update</a></td>
 				</tr>
-				</tbody>
+				</tbody> 
 			</table>
-            </a>
 			  </section>
 
 		<section data-route="ranking">
@@ -55,12 +55,16 @@
                 <th>Name</th>
                 <th>Wins</th>
                 <th>Losses</th>
+                <th>Points Scored</th>
+                <th>Points Against</th>
                 </tr>
                 <tbody data-bind="objects">
                 <tr>
-                <td data-bind="name"></td>
+                <td data-bind="team"><div data-bind="name"></div></td>
                 <td data-bind="wins"></td>
                 <td data-bind="losses"></td>
+                <td data-bind="points_scored"></td>
+                <td data-bind="points_allowed"></td>
                 </tr>
                 </tbody>
                 </table>
@@ -80,16 +84,15 @@
 					<th>Team 2 - Score</th>
 				</tr>
                 </thead>
-				<tbody data-bind="scheduleDataArray">
+				<tbody data-bind="objects">
 				<tr>
 					<td data-bind="start_time">
 					</td>
-                    <div data-bind="team_1">
-                    <td data-bind="team_1.name"></td>
-                    </div>
+                    <td data-bind="team_1"><div data-bind="name"></div></td>
+                    <p id="gameID" data-bind=id></p>
 					<td data-bind="team_1_score">
 					</td>
-					<td data-bind="team_2_id">
+					<td data-bind="team_2"><div data-bind="name"></div>
 					</td>
 					<td data-bind="team_2_score">
 					</td>
@@ -97,10 +100,55 @@
 			</tbody>
 			</table>
 		</section>
-        <section data-route="update">
-        
+        <section data-route="updatePage">
+        <h1 data-bind="title"></h1>
+			<table>
+            <thead>
+				<tr>
+                <th></th>
+					<th>Team 1</th>
+					<th>Team 1 - Score</th>
+					<th>Team 2</th>
+					<th>Team 2 - Score</th>
+				</tr>
+                </thead>
+				<tbody data-bind="objects">
+				<tr>
+                <td id="gameID" data-bind="id"></td>
+					<td data-bind="team_1"><div data-bind="name"></div>
+					</td>
+					<td><input id="team1Score"></input></td>
+					<td data-bind= "team_2"><div data-bind="name"></div>
+					</td>
+					<td><input id="team2Score"></input></td>
+                    <td><a href="#/updateGame">Update</a></td>
+				</tr>
+				</tbody>
+			</table>
         </section>
-        <section data-route="gameID">
+        <section data-route="updateGame">
+            <table>
+            <thead>
+				<tr>
+					<th>Team 1</th>
+					<th>Team 1 - Score</th>
+					<th>Team 2</th>
+					<th>Team 2 - Score</th>
+				</tr>
+                </thead>
+                <tbody data-bind="objects">
+                <tr>
+					<td data-bind="team_1"><div data-bind="name"></div>
+					</td>
+					<td data-bind= "team_1_score">
+					</td>
+					<td data-bind= "team_2"><div data-bind="name"></div>
+					</td>
+					<td data-bind= "team_2_score">
+					</td>
+				</tr>
+				</tbody> 
+			</table>
         </section>
 	</article>
 

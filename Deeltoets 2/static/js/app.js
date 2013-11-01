@@ -2,30 +2,16 @@ var AUA = AUA || {};
 
 (function () { 
 'use strict';
-var gameName1;
-var input1;
-var input2;
-// Data objecten
-	AUA.game = {
-		title:'Pool A - Score: Boomsquad vs. Burning Snow', 
-		team1: gameName1
-		
-	};
-
-	AUA.ranking = {
-		title:'Ranking',
-		
-	};
-	
-
-	AUA.schedule = {
-		title:'Pool A - Schedule',
-		
-	};
-	AUA.updateObject = {
-	updateScore: function()
-	
-	{/*
+AUA.dataObject = {
+	gameScores : 'https://api.leaguevine.com/v1/game_scores',
+	gamesSchedule : 'https://api.leaguevine.com/v1/games/?pool_id=19222&access_token=c1ca9f3ab3',
+	rankingData : 'https://api.leaguevine.com/v1/stats/ultimate/team_stats_per_tournament/?tournament_ids=%5B19389%5D&order_by=%5Blosses%2Cpoints_allowed%5D&access_token=4eb9dfd6ff',
+	// niet mooi
+	basicGames : 'https://api.leaguevine.com/v1/games/?game_ids=%5B',
+	basicGames2: '%5D&access_token=c1ca9f3ab3'
+}
+AUA.functionObject = {
+	updateScore: function(){/*
 	$.ajax({
   type:'POST',
   url:'https://api.leaguevine.com/v1/game_scores?',
@@ -41,12 +27,15 @@ var input2;
   }
 })
 */
-var type 		=  'POST',
-				url  		=  "https://api.leaguevine.com/v1/game_scores/",
-				postData 	= JSON.stringify({
-				game_id: '127165'.toString(),team_1_score: input1.toString(),team_2_score: input2.toString(),is_final: 'False'
-				});
-				
+			//get input data for PostData
+			var gameID = document.getElementById("gameID").innerHTML,
+			team1Score = document.getElementById("team1Score").value,
+			team2Score = document.getElementById("team2Score").value,
+			type 		=  'POST',
+			url  		=  "https://api.leaguevine.com/v1/game_scores/",
+			postData 	= JSON.stringify({game_id: gameID,team_1_score: team1Score.toString(),team_2_score: team2Score.toString(),is_final: 'True'});
+			console.log(gameID,team1Score,team2Score);
+			
 			// Create request
 			var xhr = new XMLHttpRequest();
 
@@ -59,8 +48,22 @@ var type 		=  'POST',
 
 			// Send request (with data as a json string)
 			xhr.send(postData);
-			
-	}
+	},
+	helloWorld: function(){
+		console.log("Hello World");
+	},
+	getData: function(url,route){
+				$.ajax({
+  				type: 'GET',
+ 				url: url,
+  				dataType: 'json',
+				contentType: 'application/x-www-form-urlencoded',
+				accepts: 'application/json',		
+ 				success: function(data){
+					console.log(data);
+					Transparency.render(qwery('[data-route='+route+']')[0], data);
+										},	
+						})}
 	}
 	
 	
@@ -77,19 +80,10 @@ var type 		=  'POST',
 	AUA.router = {
 		init: function () {
 	// checkt de url voor de volgende strings ( event listener)
-		routie('/:pageID', function(pageID) {
-				AUA.page.render(pageID);
-				console.log(pageID);
+		routie('/:pageID', function(route) {
+				AUA.page.render(route);
+				console.log(route);
 			});
-		routie({
-			'/update':function()
-			{
-			input1 = prompt("team 1 score =", "")
-			input2 = prompt("team 2 score =", "")
-			AUA.updateObject.updateScore();
-			console.log(input1);
-			}
-		})
 		},
 
 		change: function () {
@@ -116,73 +110,31 @@ var type 		=  'POST',
 	// Pages
 	AUA.page = {
 	render: function (route) {
-		var data;
-		if (isNaN(route) == false )// gameID's
+		if (route == "ranking")
 		{
-			$.ajax({
-  				type: 'GET',
- url: 'https://api.leaguevine.com/v1/games/?game_ids=%5B'+route+'%5D&access_token=c0ad0ac783',
-  				dataType: 'json',
-				contentType: 'application/x-www-form-urlencoded',
-				accepts: 'application/json',		
- 				 success: function(data){
-				console.log(data);
-				Transparency.render(qwery('[data-route='+route+']')[0], data.objects);
-					},
-				})
+			AUA.functionObject.getData(AUA.dataObject.rankingData, route);
 		}
-		
-		else if (route == "ranking")
+		else if( route == "games")
 		{
-			$.ajax({
-  				type: 'GET',
- url: 'https://api.leaguevine.com/v1/teams/?season_id=20167&access_token=34d407bac8',
-  				dataType: 'json',
-				contentType: 'application/x-www-form-urlencoded',
-				accepts: 'application/json',		
- 				 success: function(data){
-				console.log(data.objects);
-				Transparency.render(qwery('[data-route='+route+']')[0], data);
-					},
-				})
-			}
-			
-			else if( route == "games")
-			{
-							$.ajax({
-  				type: 'GET',
- url: 'https://api.leaguevine.com/v1/games/?season_id=20167&access_token=1da50d0118',
-  				dataType: 'json',
-				contentType: 'application/x-www-form-urlencoded',
-				accepts: 'application/json',		
- 				 success: function(data){
-					 var directives = {
-					
-						}
-				Transparency.render(qwery('[data-route='+route+']')[0], data, directives);
-				console.log(data)
-			
- 			 		},
-				})
-			}
+			AUA.functionObject.getData(AUA.dataObject.gamesSchedule, route);
+		}
 		else if (route == "schedule")
 		{
-					$.ajax({
-  				type: 'GET',
- url: 'https://api.leaguevine.com/v1/games/?season_id=20167&access_token=1da50d0118',
-  				dataType: 'json',
-				contentType: 'application/x-www-form-urlencoded',
-				accepts: 'application/json',		
- 				 success: function(data){
-					 console.log(data.objects);
-				Transparency.render(qwery('[data-route='+route+']')[0], data.objects);
-				 
- 			 		},
-				})
+			AUA.functionObject.getData(AUA.dataObject.gamesSchedule,route)
 		}
-		else if(route == "update")
+		else if(route == "updatePage")
 		{
-		console.log("hello");	
+				var gameID = document.getElementById("gameID").innerHTML
+				console.log(this.gameID);
+				AUA.functionObject.getData(AUA.dataObject.basicGames+gameID+AUA.dataObject.basicGames2,route);
+				
+		}
+		else if(route == "updateGame")
+		{
+			AUA.functionObject.updateScore();
+			var gameID = document.getElementById("gameID").innerHTML
+			console.log(gameID);
+			AUA.functionObject.getData(AUA.dataObject.basicGames+gameID+AUA.dataObject.basicGames2,route);
 		}
 			AUA.router.change();
 	}}
