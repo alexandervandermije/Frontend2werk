@@ -87,6 +87,11 @@ AUA.functionObject = {
 				AUA.page.render(pageID);
 				console.log(pageID);
 			});
+		routie({
+			'*':function(){
+			AUA.functionObject.getData(AUA.dataObject.gamesSchedule, "games");
+			}
+			})
 		},
 
 		change: function () {
@@ -114,12 +119,7 @@ AUA.functionObject = {
 	AUA.page = {
 	render: function (route) {
 		window.mySwipe = Swipe(document.getElementById('slider'));
-		if(route == "*")
-		{
-			route = "*"
-			AUA.functionObject.getData(AUA.dataObject.gamesSchedule, route);
-		}
-		else if (route == "ranking")
+		if (route == "ranking")
 		{
 			AUA.functionObject.getData(AUA.dataObject.rankingData, route);
 		}
@@ -132,7 +132,6 @@ AUA.functionObject = {
 			AUA.functionObject.getData(AUA.dataObject.gamesSchedule,route)
 		}
 			AUA.router.change();
-			$('#hook').hook();
 	}}
 	// DOM ready
 	domready(function () {
