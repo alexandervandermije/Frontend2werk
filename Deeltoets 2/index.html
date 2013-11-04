@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
- 
+<head> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 	<title>Threesome Ultimate Frisbee</title>
@@ -20,21 +19,25 @@
 	</header>
 	
 	<article id="content" class="col">
-		<h1 id='hoofdtitel'><span>Tournament: </span>Amsterdam Ultimate Autumn </h1>
+    <!--
+    <div id='slider' class='swipe'>
+  	<div class='swipe-wrap'>
+    <div>
+    -->
 		<section data-route="games" class="active">
+        <h2>Pool D - games</h2>
             <table>
             <thead>
 				<tr>
-                <th></th>
 					<th>Team 1</th>
 					<th>Team 1 - Score</th>
 					<th>Team 2</th>
 					<th>Team 2 - Score</th>
+                    <th>Update</th>
 				</tr>
                 </thead>
                 <tbody data-bind="objects">
                 <tr>
-                <td id="gameID" data-bind="id"></td>
 					<td data-bind="team_1"><div data-bind="name"></div>
 					</td>
 					<td data-bind= "team_1_score">
@@ -43,13 +46,15 @@
 					</td>
 					<td data-bind= "team_2_score">
 					</td>
-                    <td><a href="#/updatePage"> Update</a></td>
+                    <td id="idArray"><button><a data-bind="id" class="gameID" href="#/updatePage" onclick="AUA.functionObject.getGameID(this)"></a></button></td>
 				</tr>
 				</tbody> 
 			</table>
 			  </section>
-
+   <!--           </div>
+              <div> -->
 		<section data-route="ranking">
+        <h2>Teamoverzicht</h2>
                	<table>
                 <tr>
                 <th>Name</th>
@@ -68,12 +73,11 @@
                 </tr>
                 </tbody>
                 </table>
-
-                
 		</section>
-
+    <!--    </div>
+        <div>-->
 		<section data-route="schedule">
-			<h1 data-bind="title"></h1>
+			<h2>Pool D - Schedule</h2>
 				<table data-bind= "table">
                 <thead>
 				<tr>
@@ -86,7 +90,7 @@
                 </thead>
 				<tbody data-bind="objects">
 				<tr>
-					<td data-bind="start_time">
+					<td id="startTime" data-bind="start_time">
 					</td>
                     <td data-bind="team_1"><div data-bind="name"></div></td>
                     <p id="gameID" data-bind=id></p>
@@ -100,28 +104,30 @@
 			</tbody>
 			</table>
 		</section>
+        <!--</div>
+        </div>
+        </div>-->
         <section data-route="updatePage">
         <h1 data-bind="title"></h1>
 			<table>
             <thead>
 				<tr>
-                <th></th>
 					<th>Team 1</th>
 					<th>Team 1 - Score</th>
 					<th>Team 2</th>
 					<th>Team 2 - Score</th>
+                    <th>Update</th>
 				</tr>
                 </thead>
 				<tbody data-bind="objects">
 				<tr>
-                <td id="gameID" data-bind="id"></td>
 					<td data-bind="team_1"><div data-bind="name"></div>
 					</td>
-					<td><input id="team1Score"></input></td>
+					<td><input id="team1Score" data-bind="team_1_score" type="number"></input></td>
 					<td data-bind= "team_2"><div data-bind="name"></div>
 					</td>
-					<td><input id="team2Score"></input></td>
-                    <td><a href="#/updateGame">Update</a></td>
+					<td><input id="team2Score" data-bind="team_2_score" type="number"></input></td>
+                    <td><button><a class="gameID" data-bind="id" href="#/updateGame" onclick="AUA.functionObject.updateScore(this)">Update</a></button></td>
 				</tr>
 				</tbody>
 			</table>
@@ -160,7 +166,7 @@
 	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
 	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
     <script src="static/js/lib/zepto.min.js" type="text/javascript"></script>
-
+	<script src="static/js/lib/hookjs/hook.min.js" type="text/javascript"></script>
 	<!-- Application -->
 	<script src="static/js/app.js"></script>
 	

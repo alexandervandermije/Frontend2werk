@@ -11,7 +11,7 @@ AUA.dataObject = {
 	basicGames2: '%5D&access_token=c1ca9f3ab3'
 }
 AUA.functionObject = {
-	updateScore: function(){/*
+	updateScore: function(id){/*
 	$.ajax({
   type:'POST',
   url:'https://api.leaguevine.com/v1/game_scores?',
@@ -26,17 +26,17 @@ AUA.functionObject = {
 	console.log(data); 
   }
 })
-*/
+*/console.log(id);
 			//get input data for PostData
-			var gameID = document.getElementById("gameID").innerHTML,
-			team1Score = document.getElementById("team1Score").value,
+			var	team1Score = document.getElementById("team1Score").value,
 			team2Score = document.getElementById("team2Score").value,
 			type 		=  'POST',
 			url  		=  "https://api.leaguevine.com/v1/game_scores/",
-			postData 	= JSON.stringify({game_id: gameID,team_1_score: team1Score.toString(),team_2_score: team2Score.toString(),is_final: 'True'});
-			console.log(gameID,team1Score,team2Score);
+			postData 	= JSON.stringify({game_id: id.innerHTML,team_1_score: team1Score,team_2_score: team2Score,is_final: 'True'});
+			
 			
 			// Create request
+			console.log(postData);
 			var xhr = new XMLHttpRequest();
 
 			// Open request
@@ -48,9 +48,8 @@ AUA.functionObject = {
 
 			// Send request (with data as a json string)
 			xhr.send(postData);
-	},
-	helloWorld: function(){
-		console.log("Hello World");
+			
+			AUA.functionObject.getData(AUA.dataObject.basicGames+id.innerHTML+AUA.dataObject.basicGames2,"updateGame");	
 	},
 	getData: function(url,route){
 				$.ajax({
@@ -63,7 +62,12 @@ AUA.functionObject = {
 					console.log(data);
 					Transparency.render(qwery('[data-route='+route+']')[0], data);
 										},	
-						})}
+						})},
+	getGameID:function(id){
+		var gameID = id.innerHTML;
+		console.log(gameID);
+		AUA.functionObject.getData(AUA.dataObject.basicGames+gameID+AUA.dataObject.basicGames2,"updatePage");
+	}
 	}
 	
 	
@@ -72,7 +76,6 @@ AUA.functionObject = {
 		init: function () {
 			// start de router
 			AUA.router.init();
-			
 		}
 	};
 
@@ -80,9 +83,9 @@ AUA.functionObject = {
 	AUA.router = {
 		init: function () {
 	// checkt de url voor de volgende strings ( event listener)
-		routie('/:pageID', function(route) {
-				AUA.page.render(route);
-				console.log(route);
+		routie('/:pageID', function(pageID) {
+				AUA.page.render(pageID);
+				console.log(pageID);
 			});
 		},
 
@@ -110,7 +113,13 @@ AUA.functionObject = {
 	// Pages
 	AUA.page = {
 	render: function (route) {
-		if (route == "ranking")
+		window.mySwipe = Swipe(document.getElementById('slider'));
+		if(route == "*")
+		{
+			route = "*"
+			AUA.functionObject.getData(AUA.dataObject.gamesSchedule, route);
+		}
+		else if (route == "ranking")
 		{
 			AUA.functionObject.getData(AUA.dataObject.rankingData, route);
 		}
@@ -122,21 +131,8 @@ AUA.functionObject = {
 		{
 			AUA.functionObject.getData(AUA.dataObject.gamesSchedule,route)
 		}
-		else if(route == "updatePage")
-		{
-				var gameID = document.getElementById("gameID").innerHTML
-				console.log(this.gameID);
-				AUA.functionObject.getData(AUA.dataObject.basicGames+gameID+AUA.dataObject.basicGames2,route);
-				
-		}
-		else if(route == "updateGame")
-		{
-			AUA.functionObject.updateScore();
-			var gameID = document.getElementById("gameID").innerHTML
-			console.log(gameID);
-			AUA.functionObject.getData(AUA.dataObject.basicGames+gameID+AUA.dataObject.basicGames2,route);
-		}
 			AUA.router.change();
+			$('#hook').hook();
 	}}
 	// DOM ready
 	domready(function () {

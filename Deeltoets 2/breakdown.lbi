@@ -1,0 +1,25 @@
+Breakdown Amsterdam Ultimate Autumn App
+
+namespace
+Self Invoking Function
+	- Data Object
+		-urls
+	- Functions Object
+		- getData(id)
+        	transparancy render
+    	-updateScore(url,route)
+	- Router Object
+		- Init
+    		-routie(pageID)
+        		-pageRender(pageID)
+    		-change
+	- Page Object
+		- Render
+    		- Check Route
+        		- getData call
+			-Change Call
+	DomReady 
+ 		- Init call   
+     
+
+        
