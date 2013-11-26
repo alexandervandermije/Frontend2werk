@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+	<title>Threesome Ultimate Frisbee</title>
+	<link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+	<header>
+	<h1 id="title">Amsterdam Ultimate Autumn</h1>
+    <nav>
+			<ul>
+				<li><a href="#/games">Games</a></li>
+				<li><a href="#/ranking">Ranking</a></li>
+				<li><a href="#/schedule">Schedule</a></li>
+		    </ul>
+		</nav>
+	</header>
+    <div id="loader"><img src="static/images/ajax-loader.gif"/>Loading...</div><div id="errorBox"><p id="errorMessage"></p></div>
+    <div id="detectSwipe">
+	<article id="content" class="col">
+		<section id="gameRoute" data-route="games" class="active">
+        <h2>Pool D - games</h2>
+            <table>
+            <thead>
+				<tr>
+					<th>Team 1</th>
+					<th>Score</th>
+					<th>Team 2</th>
+					<th>Score</th>
+                    <th>Update</th>
+				</tr>
+                </thead>
+                <tbody data-bind="objects">
+                <tr>
+					<td data-bind="team_1"><div data-bind="name"></div>
+					</td>
+					<td data-bind= "team_1_score">
+					</td>
+					<td data-bind= "team_2"><div data-bind="name"></div>
+					</td>
+					<td data-bind= "team_2_score">
+					</td>
+                    <td id="idArray"><button><a data-bind="id" class="gameID" href="#/updatePage" onclick="AUA.functionObject.getGameID(this)"></a></button></td>
+				</tr>
+				</tbody> 
+			</table>
+			  </section>
+		<section id='ranking' data-route="ranking">
+        <h2>Ranking</h2>
+               	<table>
+                <tr>
+                <th>Name</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Points Scored</th>
+                <th>Points Against</th>
+                </tr>
+                <tbody data-bind="objects">
+                <tr>
+                <td data-bind="team"><div data-bind="name"></div></td>
+                <td data-bind="wins"></td>
+                <td data-bind="losses"></td>
+                <td data-bind="points_scored"></td>
+                <td data-bind="points_allowed"></td>
+                </tr>
+                </tbody>
+                </table>
+		</section>
+		<section id="schedule" data-route="schedule">
+			<h2>Pool D - Schedule</h2>
+				<table data-bind= "table">
+                <thead>
+				<tr>
+					<th>Date</th>
+					<th>Team 1</th>
+					<th>Score</th>
+					<th>Team 2</th>
+					<th>Score</th>
+				</tr>
+                </thead>
+				<tbody data-bind="objects">
+				<tr>
+					<td id="startTime" data-bind="start_time">
+					</td>
+                    <td data-bind="team_1"><div data-bind="name"></div></td>
+                    <p id="gameID" data-bind=id></p>
+					<td data-bind="team_1_score">
+					</td>
+					<td data-bind="team_2"><div data-bind="name"></div>
+					</td>
+					<td data-bind="team_2_score">
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</section>
+        <section data-route="updatePage">
+        <h2>Update Game</h2>
+			<table>
+            <thead>
+				<tr>
+					<th>Team 1</th>
+					<th>Score</th>
+					<th>Team 2</th>
+					<th>Score</th>
+                    <th>Update</th>
+				</tr>
+                </thead>
+				<tbody data-bind="objects">
+				<tr>
+					<td data-bind="team_1"><div data-bind="name"></div>
+					</td>
+					<td><input id="team1Score" data-bind="team_1_score"></input></td>
+					<td data-bind= "team_2"><div data-bind="name"></div>
+					</td>
+					<td><input id="team2Score" data-bind="team_2_score"></input></td>
+                    <td><button><a class="gameID" data-bind="id" href="#/updateGame" onclick="AUA.functionObject.updateScore(this)">Update</a></button></td>
+				</tr>
+				</tbody>
+			</table>
+        </section>
+        <section data-route="updateGame">
+        <h2>Game</h2>
+            <table>
+            <thead>
+				<tr>
+					<th>Team 1</th>
+					<th>Score</th>
+					<th>Team 2</th>
+					<th>Score</th>
+				</tr>
+                </thead>
+                <tbody data-bind="objects">
+                <tr>
+					<td id='team1Name' data-bind="team_1"><div data-bind="name"></div>
+					</td>
+					<td id='scoreTeam1'data-bind= "team_1_score">
+					</td>
+					<td id='team2Name' data-bind= "team_2"><div data-bind="name"></div>
+					</td>
+					<td id='scoreTeam2' data-bind= "team_2_score">
+					</td>
+				</tr>
+				</tbody> 
+			</table>
+        </section>
+	</article>
+    </div>
+	<footer>
+    <p>Made by: Alexander van der Mije</p>
+    </footer>
+	<!-- Libs -->
+	<script src="static/js/lib/routie.min.js"></script>
+	<script src="static/js/lib/ready.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
+    <script src="static/js/lib/quo.js" type="text/javascript"></script>
+	<!-- Application -->
+	<script src="static/js/app.js"></script>
+</div>
+</body>
+</html>

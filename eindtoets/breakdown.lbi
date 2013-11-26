@@ -1,0 +1,62 @@
+Breakdown Amsterdam Ultimate Autumn App
+
+namespace
+Self Invoking Function
+	- Data Object
+		-urls
+	- Functions Object
+		- changeData(type,url,postData,Callback)
+        		-CheckifReady();
+    		- updateScore(id)
+			-Checks if data is correct then
+				-changeData(post)
+				-changeData(get)
+					-callback
+						-transparancy.render(route,data)
+		- getGameID(id)
+			-changeData(get)
+				-callback
+					-transparancy.render(route,data);
+		- RefreshPage()
+			-pageLoading(true)
+				location.reload
+				AUA.router.change
+		- pageLoading(loading)
+			if(loading = true)
+				loader = display:block
+			else 
+				display none;
+		- quoDetectSwipe
+			when swipe down
+				refreshPage()
+			when swipe left
+				check which page is active
+					changeData(get)
+					changeActive(pageCounter)
+			When swipe right
+				check which page is active
+					changeData(get)
+					changeActive(pageCounter)
+		- checkWinner(scoreTeam1,scoreTeam2)
+	-controller object
+		-init
+			router.init
+	- Router Object
+		- Init
+    			-routie(pageID)
+        			-pageRender(pageID)
+			-routie('*')
+				-standard page
+
+    			-change(route)
+			-changeActive
+	- Page Object
+		- Render
+    		-router.change
+	window.addEventListener('load)
+		-quoDetectSwipe
+	DomReady 
+ 		- Init call   
+     
+
+        
